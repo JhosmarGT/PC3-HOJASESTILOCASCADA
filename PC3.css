@@ -1,0 +1,432 @@
+/* ==========================================================================
+   TABLA DE COMPATIBILIDAD Y PRUEBAS (REQUISITO PREGUNTA 4)
+   --------------------------------------------------------------------------
+   Navegador Probado  | Qué se ve igual               | Qué cambia/Fallback
+   ------------------|-------------------------------|-----------------------
+   Google Chrome 122 | Cristal, sombras, animaciones  | Soporta backdrop-filter nativo.
+   Mozilla Firefox   | Layout, colores, tarjetas 3D  | Aplica fallback sólido si se desactiva.
+   
+   Fuente Consultada: caniuse.com / MDN Web Docs
+   ========================================================================== */
+
+:root {
+  --primary: #6366f1;
+  --primary-hover: #4f46e5;
+  --bg-dark: #0f172a;
+  --text-main: #f8fafc;
+  --text-muted: #94a3b8;
+  --accent: #38bdf8;
+  --neon-glow: rgba(99, 102, 241, 0.6);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+  background-color: var(--bg-dark);
+  color: var(--text-main);
+  line-height: 1.6;
+}
+
+/* ==========================================================================
+   PREGUNTA 1: EFECTOS AVANZADOS
+   ========================================================================== */
+
+.animated-bg {
+  background: linear-gradient(-45deg, #0f172a, #1e1b4b, #2e1065, #0f172a);
+  background-size: 400% 400%;
+  animation: gradientBG 12s ease infinite;
+  padding: 2rem;
+  border-bottom: 2px solid rgba(99, 102, 241, 0.3);
+}
+
+@keyframes gradientBG {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.header-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1200px;
+  margin: 0 auto 2rem auto;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.glowing-logo {
+  font-size: 1.6rem;
+  font-weight: bold;
+  color: var(--accent);
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  text-shadow: 0 0 10px rgba(56, 189, 248, 0.5);
+  transition: transform 0.3s ease;
+}
+
+.glowing-logo:hover {
+  transform: scale(1.05);
+}
+
+.nav-menu {
+  display: flex;
+  gap: 0.8rem;
+  flex-wrap: wrap;
+}
+
+.neon-btn {
+  background: rgba(15, 23, 42, 0.6);
+  border: 1px solid rgba(99, 102, 241, 0.4);
+  color: var(--text-main);
+  padding: 0.7rem 1.3rem;
+  border-radius: 12px;
+  cursor: pointer;
+  font-weight: 500;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  backdrop-filter: blur(5px);
+}
+
+.neon-btn:hover {
+  background: var(--primary);
+  color: #fff;
+  border-color: var(--accent);
+  transform: translateY(-4px) scale(1.03);
+  box-shadow: 0 8px 25px var(--neon-glow), 0 0 10px var(--accent);
+}
+
+.neon-btn.active {
+  background: var(--primary);
+  border-color: var(--accent);
+  box-shadow: 0 0 15px var(--neon-glow);
+}
+
+.glow-text {
+  font-size: 2.2rem;
+  margin-bottom: 0.5rem;
+  background: linear-gradient(90deg, #ffffff, var(--accent));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.p1-hero {
+  max-width: 800px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.p1-dock {
+  display: flex;
+  justify-content: center;
+  gap: 1.2rem;
+  margin: 2rem 0;
+}
+
+.shimmer-btn {
+  position: relative;
+  background: #1e293b;
+  color: white;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 0.9rem 1.8rem;
+  border-radius: 14px;
+  cursor: pointer;
+  font-weight: 600;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.shimmer-btn::after {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(60deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transform: rotate(30deg) translateX(-100%);
+  transition: transform 0.6s ease;
+}
+
+.shimmer-btn:hover::after {
+  transform: rotate(30deg) translateX(100%);
+}
+
+.shimmer-btn:hover {
+  transform: translateY(-3px) scale(1.05);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4);
+}
+
+.shimmer-btn:active {
+  transform: scale(0.95);
+}
+
+.shimmer-btn.secondary:hover { background: #0284c7; }
+.shimmer-btn.success:hover { background: #10b981; }
+
+.glow-box {
+  background: rgba(15, 23, 42, 0.8);
+  border: 1px solid rgba(56, 189, 248, 0.3);
+  padding: 1.2rem;
+  border-radius: 12px;
+  font-size: 1rem;
+  color: var(--accent);
+  box-shadow: 0 0 20px rgba(56, 189, 248, 0.15);
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+  transition: opacity 0.3s ease;
+}
+
+.progress-bar-container {
+  width: 100%;
+  height: 4px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.progress-bar {
+  width: 0%;
+  height: 100%;
+  background: linear-gradient(90deg, var(--primary), var(--accent));
+  transition: width 0.4s ease-in-out;
+}
+
+/* ==========================================================================
+   LAYOUT Y DEMÁS SECCIONES
+   ========================================================================== */
+.content-container {
+  max-width: 1200px;
+  margin: 2rem auto;
+  padding: 0 1.5rem;
+}
+
+.section-block {
+  margin-bottom: 4rem;
+  scroll-margin-top: 2rem;
+}
+
+.section-title {
+  margin-bottom: 1.5rem;
+  border-left: 4px solid var(--primary);
+  padding-left: 1rem;
+}
+
+.section-title h2 { font-size: 1.6rem; }
+.section-title p { color: var(--text-muted); }
+
+/* ==========================================================================
+   PREGUNTA 2: TRANSFORMACIONES ÚNICAS Y DIFERENCIADAS POR TARJETA
+   ========================================================================== */
+.cards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2.5rem;
+  perspective: 1200px; /* Contenedor con profundidad 3D global */
+}
+
+.card {
+  background: linear-gradient(145deg, #1e293b, #0f172a);
+  border-radius: 20px;
+  padding: 2rem;
+  position: relative;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  transform-style: preserve-3d;
+  transition: transform 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275), 
+              box-shadow 0.6s ease, 
+              border-color 0.6s ease;
+}
+
+/* --------------------------------------------------------------------------
+   TARJETA 1: Transformación de Inclinación Diagonal Profunda (Ejes X e Y)
+   -------------------------------------------------------------------------- */
+.card:nth-child(1):hover {
+  transform: translateY(-15px) rotateX(15deg) rotateY(15deg) scale(1.05);
+  box-shadow: -20px 25px 40px rgba(0, 0, 0, 0.6), 0 0 25px rgba(56, 189, 248, 0.4);
+  border-color: var(--accent);
+}
+
+.card:nth-child(1):hover .card-icon {
+  transform: translateZ(50px) rotateZ(-20deg) scale(1.2);
+  color: var(--accent);
+}
+
+/* --------------------------------------------------------------------------
+   TARJETA 2: Transformación de Elevación Frontal con Zoom y Rotación Inversa
+   -------------------------------------------------------------------------- */
+.card:nth-child(2):hover {
+  transform: translateY(-20px) rotateX(-12deg) rotateY(0deg) scale(1.08);
+  box-shadow: 0 30px 50px rgba(0, 0, 0, 0.7), 0 0 30px rgba(99, 102, 241, 0.5);
+  border-color: var(--primary);
+}
+
+.card:nth-child(2):hover .card-icon {
+  transform: translateZ(60px) rotateY(360deg) scale(1.25);
+  color: #ffffff;
+}
+
+/* --------------------------------------------------------------------------
+   TARJETA 3: Transformación de Inclinación Lateral Dinámica (Eje Y Invertido)
+   -------------------------------------------------------------------------- */
+.card:nth-child(3):hover {
+  transform: translateY(-15px) rotateX(-10deg) rotateY(-20deg) scale(1.05);
+  box-shadow: 20px 25px 40px rgba(0, 0, 0, 0.6), 0 0 25px rgba(16, 185, 129, 0.4);
+  border-color: #10b981;
+}
+
+.card:nth-child(3):hover .card-icon {
+  transform: translateZ(50px) rotateZ(25deg) scale(1.2);
+  color: #10b981;
+}
+
+/* Efectos comunes para los elementos internos al hacer hover en cualquier tarjeta */
+.card-badge {
+  position: absolute;
+  top: 1.2rem;
+  right: 1.2rem;
+  background: var(--primary);
+  color: white;
+  font-size: 0.75rem;
+  font-weight: 700;
+  padding: 0.3rem 0.8rem;
+  border-radius: 20px;
+  transition: transform 0.4s ease, background 0.4s ease;
+}
+
+.card:hover .card-badge {
+  transform: translateZ(35px) scale(1.15) rotate(5deg);
+  background: var(--accent);
+  color: #0f172a;
+}
+
+.card-icon {
+  font-size: 3rem;
+  color: var(--accent);
+  margin-bottom: 1.2rem;
+  display: inline-block;
+  transition: transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.card h3 {
+  font-size: 1.3rem;
+  margin-bottom: 0.5rem;
+  transition: transform 0.4s ease, color 0.4s ease;
+}
+
+.card:hover h3 {
+  transform: translateZ(25px);
+  color: var(--accent);
+}
+
+.card p {
+  color: var(--text-muted);
+  font-size: 0.95rem;
+  transition: transform 0.4s ease;
+}
+
+.card:hover p {
+  transform: translateZ(20px);
+  color: var(--text-main);
+}
+
+.card-btn {
+  margin-top: 1.5rem;
+  width: 100%;
+  padding: 0.8rem;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--primary);
+  color: var(--text-main);
+  font-weight: 600;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.4s ease;
+}
+
+.card:hover .card-btn {
+  transform: translateZ(40px);
+  background: var(--primary);
+  box-shadow: 0 8px 15px rgba(99, 102, 241, 0.4);
+}
+/* ==========================================================================
+   PREGUNTA 3: ANIMACIÓN AUTÓNOMA
+   ========================================================================== */
+.animation-stage {
+  background: #020617;
+  height: 300px;
+  border-radius: 16px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.orbit-system {
+  position: relative;
+  width: 100px;
+  height: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.core-planet {
+  width: 50px;
+  height: 50px;
+  background: radial-gradient(circle, #38bdf8 0%, #0284c7 100%);
+  border-radius: 50%;
+  box-shadow: 0 0 20px rgba(56, 189, 248, 0.6);
+  animation: pulse 3s infinite alternate ease-in-out;
+}
+
+.ring {
+  position: absolute;
+  border-radius: 50%;
+  border: 2px solid rgba(255, 255, 255, 0.15);
+  animation: spin 8s linear infinite;
+}
+
+.ring-1 { width: 140px; height: 140px; border-top-color: var(--accent); }
+.ring-2 { width: 200px; height: 200px; border-bottom-color: var(--primary); animation-duration: 12s; animation-direction: reverse; }
+
+@keyframes spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+@keyframes pulse { 0% { transform: scale(0.9); } 100% { transform: scale(1.1); } }
+
+/* ==========================================================================
+   PREGUNTA 4: PROPIEDADES MODERNAS Y TABLA
+   ========================================================================== */
+.modern-card {
+  background-color: rgba(30, 41, 59, 0.85);
+  border-radius: 16px;
+  padding: 2rem;
+  border: 1px solid #334155;
+}
+
+@supports (backdrop-filter: blur(10px)) or (-webkit-backdrop-filter: blur(10px)) {
+  .modern-card {
+    background-color: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+  }
+}
+
+.test-table-container { margin-top: 1.5rem; overflow-x: auto; }
+.test-table { width: 100%; border-collapse: collapse; margin-top: 1rem; font-size: 0.9rem; }
+.test-table th, .test-table td { padding: 0.75rem 1rem; text-align: left; border-bottom: 1px solid rgba(255, 255, 255, 0.1); }
+.test-table th { background: rgba(255, 255, 255, 0.05); color: var(--accent); }
+
+@media (prefers-reduced-motion: reduce) {
+  *, ::before, ::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

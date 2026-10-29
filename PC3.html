@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="PC3.css">
+</head>
+<body>
+
+  <!-- PREGUNTA 1: Menú de Navegación e Interfaz Principal con Efectos Avanzados -->
+  <header id="pregunta1" class="main-header animated-bg">
+    <div class="header-container">
+      <div class="logo glowing-logo">
+        <i class="fa-solid fa-code"></i> <span>Evaluación Web - Arni Jhosmar Gomez Torres</span>
+      </div>
+      
+      <!-- Menú de Navegación con Efecto Neón y Glow -->
+      <nav class="nav-menu">
+        <button class="nav-btn neon-btn active" onclick="navigateTo('pregunta1', event)">
+          <i class="fa-solid fa-house"></i> P1: Menú Principal
+        </button>
+        <button class="nav-btn neon-btn" onclick="navigateTo('pregunta2', event)">
+          <i class="fa-solid fa-layer-group"></i> P2: Galería 3D
+        </button>
+        <button class="nav-btn neon-btn" onclick="navigateTo('pregunta3', event)">
+          <i class="fa-solid fa-dharmachakra"></i> P3: Animación
+        </button>
+        <button class="nav-btn neon-btn" onclick="navigateTo('pregunta4', event)">
+          <i class="fa-solid fa-laptop-code"></i> P4: Glassmorphism
+        </button>
+      </nav>
+    </div>
+
+    <!-- Sub-interfaz interactiva con transiciones avanzadas -->
+    <section class="p1-hero">
+      <h1 class="glow-text">Pregunta 1: Interfaz de Navegación Interactiva</h1>
+      <p>Pasa el cursor y haz clic para experimentar las transiciones avanzadas:</p>
+
+      <div class="p1-dock">
+        <button class="p1-dock-btn shimmer-btn" onclick="p1Accion('Procesando datos con transición suave...', this)">
+          <i class="fa-solid fa-rocket"></i> Accionar
+        </button>
+        <button class="p1-dock-btn shimmer-btn secondary" onclick="p1Accion('Ajustes guardados con éxito', this)">
+          <i class="fa-solid fa-sliders"></i> Ajustes
+        </button>
+        <button class="p1-dock-btn shimmer-btn success" onclick="p1Accion('¡Operación confirmada!', this)">
+          <i class="fa-solid fa-check"></i> Confirmar
+        </button>
+      </div>
+
+      <div id="p1-feedback" class="p1-feedback glow-box">
+        <span id="p1-feedback-text">Haz clic en cualquier botón para probar los efectos.</span>
+        <div class="progress-bar-container">
+          <div id="p1-progress" class="progress-bar"></div>
+        </div>
+      </div>
+    </section>
+  </header>
+
+  <main class="content-container">
+
+    <!-- PREGUNTA 2: Galería de Tarjetas con Transformaciones CSS -->
+    <section id="pregunta2" class="section-block">
+      <div class="section-title">
+        <h2>Pregunta 2: Galería de Tarjetas con Transformaciones</h2>
+        <p>Pasa el cursor sobre las tarjetas para interactuar con las transformaciones 3D, rotaciones y escalas.</p>
+      </div>
+
+      <div class="cards-grid">
+        <div class="card">
+          <div class="card-badge">Especial</div>
+          <div class="card-icon"><i class="fa-solid fa-mountain-sun"></i></div>
+          <h3>Valle del Colca</h3>
+          <p>Experiencia de senderismo y avistamiento con efectos de profundidad y escalado en rotación.</p>
+          <button class="card-btn" onclick="alert('Seleccionaste: Valle del Colca')">Explorar</button>
+        </div>
+
+        <div class="card">
+          <div class="card-badge">Popular</div>
+          <div class="card-icon"><i class="fa-solid fa-water"></i></div>
+          <h3>Ruta de Lagos</h3>
+          <p>Transformación sutil con cambio de ángulo de perspectiva e iluminación al interactuar.</p>
+          <button class="card-btn" onclick="alert('Seleccionaste: Ruta de Lagos')">Explorar</button>
+        </div>
+
+        <div class="card">
+          <div class="card-badge">Aventura</div>
+          <div class="card-icon"><i class="fa-solid fa-compass"></i></div>
+          <h3>Reserva Natural</h3>
+          <p>Efectos combinados en eje Y y traslación vertical continua al recibir hover.</p>
+          <button class="card-btn" onclick="alert('Seleccionaste: Reserva Natural')">Explorar</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- PREGUNTA 3: Animación Autónoma Automática sin Interacción -->
+    <section id="pregunta3" class="section-block">
+      <div class="section-title">
+        <h2>Pregunta 3: Elemento Animado Autónomo</h2>
+        <p>Animación continua en CSS puro ejecutada automáticamente sin requerir acción del usuario.</p>
+      </div>
+
+      <div class="animation-stage">
+        <div class="orbit-system">
+          <div class="core-planet"></div>
+          <div class="ring ring-1"></div>
+          <div class="ring ring-2"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PREGUNTA 4: Propiedades CSS Modernas + Fallbacks + Tabla -->
+    <section id="pregunta4" class="section-block">
+      <div class="section-title">
+        <h2>Pregunta 4: Componente con CSS Moderno y Compatibilidad</h2>
+        <p>Glassmorphism con <code>@supports</code>, fallbacks y compatibilidad comprobada.</p>
+      </div>
+
+      <div class="modern-card">
+        <h3>Panel de Eficiencia</h3>
+        <p>Este contenedor utiliza efecto de cristal esmerilado (Glassmorphism) mediante <code>backdrop-filter</code> cuando el navegador lo soporta, manteniendo un respaldo sólido en navegadores antiguos.</p>
+
+        <div class="test-table-container">
+          <h4>Tabla de Pruebas de Compatibilidad</h4>
+          <table class="test-table">
+            <thead>
+              <tr>
+                <th>Navegador</th>
+                <th>Efecto de Cristal</th>
+                <th>Animaciones</th>
+                <th>Fuente Consultada</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Google Chrome (v120+)</td>
+                <td>Funciona con blur activo</td>
+                <td>Fluida a 60fps</td>
+                <td>MDN Web Docs</td>
+              </tr>
+              <tr>
+                <td>Firefox (v115+)</td>
+                <td>Funciona (backdrop-filter)</td>
+                <td>Fluida a 60fps</td>
+                <td>caniuse.com</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <script src="PC3.js"></script>
+</body>
+</html>
